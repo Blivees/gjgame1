@@ -1,0 +1,290 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://GDscripts/level_sense.gd" id="1_level_sense"]
+
+[sub_resource type="SystemFont" id="SystemFont_menu"]
+font_names = PackedStringArray("Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", "Noto Sans SC")
+font_weight = 600
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tab"]
+bg_color = Color(0.16, 0.21, 0.23, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.53, 0.60, 0.62, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_left = 12
+corner_radius_bottom_right = 12
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hover"]
+bg_color = Color(0.24, 0.31, 0.34, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.53, 0.60, 0.62, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_left = 12
+corner_radius_bottom_right = 12
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_selected"]
+bg_color = Color(0.61, 0.79, 0.81, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.53, 0.60, 0.62, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_left = 12
+corner_radius_bottom_right = 12
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_selected_hover"]
+bg_color = Color(0.72, 0.86, 0.87, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.53, 0.60, 0.62, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_left = 12
+corner_radius_bottom_right = 12
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_focus"]
+bg_color = Color(0.16, 0.21, 0.23, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.94, 0.91, 0.84, 1)
+draw_center = false
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_left = 12
+corner_radius_bottom_right = 12
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.16, 0.21, 0.23, 1)
+content_margin_left = 36.0
+border_width_left = 2
+content_margin_top = 36.0
+border_width_top = 2
+content_margin_right = 36.0
+border_width_right = 2
+content_margin_bottom = 36.0
+border_width_bottom = 2
+border_color = Color(0.53, 0.60, 0.62, 1)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_left = 22
+corner_radius_bottom_right = 22
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_action"]
+bg_color = Color(0.94, 0.91, 0.84, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_left = 12
+corner_radius_bottom_right = 12
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_action_hover"]
+bg_color = Color(1, 0.98, 0.93, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_left = 12
+corner_radius_bottom_right = 12
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_keycap"]
+bg_color = Color(0.16, 0.21, 0.23, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.53, 0.60, 0.62, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_left = 6
+corner_radius_bottom_right = 6
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slider"]
+content_margin_top = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.08, 0.13, 0.15, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_slider_fill"]
+bg_color = Color(0.61, 0.79, 0.81, 1)
+
+[sub_resource type="Theme" id="Theme_level_sense"]
+default_font = SubResource("SystemFont_menu")
+default_font_size = 32
+Button/colors/font_color = Color(0.94, 0.91, 0.84, 1)
+Button/colors/font_focus_color = Color(0.94, 0.91, 0.84, 1)
+Button/colors/font_hover_color = Color(0.94, 0.91, 0.84, 1)
+Button/colors/font_hover_pressed_color = Color(0.08, 0.13, 0.15, 1)
+Button/colors/font_pressed_color = Color(0.08, 0.13, 0.15, 1)
+Button/styles/focus = SubResource("StyleBoxFlat_focus")
+Button/styles/hover = SubResource("StyleBoxFlat_hover")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_selected_hover")
+Button/styles/normal = SubResource("StyleBoxFlat_tab")
+Button/styles/pressed = SubResource("StyleBoxFlat_selected")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_slider_fill")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_slider_fill")
+HSlider/styles/slider = SubResource("StyleBoxFlat_slider")
+Label/colors/font_color = Color(0.94, 0.91, 0.84, 1)
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_panel")
+SaveButton/base_type = &"Button"
+SaveButton/colors/font_color = Color(0.08, 0.13, 0.15, 1)
+SaveButton/colors/font_focus_color = Color(0.08, 0.13, 0.15, 1)
+SaveButton/colors/font_hover_color = Color(0.08, 0.13, 0.15, 1)
+SaveButton/styles/hover = SubResource("StyleBoxFlat_action_hover")
+SaveButton/styles/normal = SubResource("StyleBoxFlat_action")
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_tabs"]
+
+[node name="Level Sense" type="CanvasLayer"]
+process_mode = 3
+layer = 10
+script = ExtResource("1_level_sense")
+
+[node name="Overlay" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = SubResource("Theme_level_sense")
+
+[node name="Menu" type="VBoxContainer" parent="Overlay"]
+custom_minimum_size = Vector2(960, 0)
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="Toolbar" type="HBoxContainer" parent="Overlay/Menu"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="VolumeTab" type="Button" parent="Overlay/Menu/Toolbar"]
+custom_minimum_size = Vector2(0, 78)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_tabs")
+text = "音量"
+
+[node name="SaveTab" type="Button" parent="Overlay/Menu/Toolbar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 78)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+toggle_mode = true
+button_pressed = true
+button_group = SubResource("ButtonGroup_tabs")
+text = "存档"
+
+[node name="ReturnButton" type="Button" parent="Overlay/Menu/Toolbar"]
+custom_minimum_size = Vector2(0, 78)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+text = "返回主菜单"
+
+[node name="Panel" type="PanelContainer" parent="Overlay/Menu"]
+custom_minimum_size = Vector2(0, 282)
+layout_mode = 2
+
+[node name="SavePanel" type="VBoxContainer" parent="Overlay/Menu/Panel"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="LevelName" type="Label" parent="Overlay/Menu/Panel/SavePanel"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 46
+text = "Level One"
+
+[node name="SaveStatus" type="Label" parent="Overlay/Menu/Panel/SavePanel"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.77, 0.78, 1)
+theme_override_font_sizes/font_size = 28
+text = "暂无存档"
+
+[node name="SaveButton" type="Button" parent="Overlay/Menu/Panel/SavePanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(290, 66)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_default_cursor_shape = 2
+theme_type_variation = &"SaveButton"
+text = "保存进度"
+
+[node name="VolumePanel" type="VBoxContainer" parent="Overlay/Menu/Panel"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="VolumeHeader" type="HBoxContainer" parent="Overlay/Menu/Panel/VolumePanel"]
+layout_mode = 2
+
+[node name="VolumeLabel" type="Label" parent="Overlay/Menu/Panel/VolumePanel/VolumeHeader"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 46
+text = "总音量"
+
+[node name="VolumeValue" type="Label" parent="Overlay/Menu/Panel/VolumePanel/VolumeHeader"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "100%"
+
+[node name="VolumeSlider" type="HSlider" parent="Overlay/Menu/Panel/VolumePanel"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+mouse_default_cursor_shape = 2
+value = 100.0
+
+[node name="ResumeHint" type="HBoxContainer" parent="Overlay/Menu"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Keycap" type="PanelContainer" parent="Overlay/Menu/ResumeHint"]
+custom_minimum_size = Vector2(82, 42)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_keycap")
+
+[node name="KeyName" type="Label" parent="Overlay/Menu/ResumeHint/Keycap"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "ESC"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResumeLabel" type="Label" parent="Overlay/Menu/ResumeHint"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.08, 0.13, 0.15, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 26
+text = "继续游戏"
+
+[connection signal="pressed" from="Overlay/Menu/Toolbar/VolumeTab" to="." method="_on_volume_tab_pressed"]
+[connection signal="pressed" from="Overlay/Menu/Toolbar/SaveTab" to="." method="_on_save_tab_pressed"]
+[connection signal="pressed" from="Overlay/Menu/Toolbar/ReturnButton" to="." method="_on_return_pressed"]
+[connection signal="pressed" from="Overlay/Menu/Panel/SavePanel/SaveButton" to="." method="_on_save_pressed"]
+[connection signal="value_changed" from="Overlay/Menu/Panel/VolumePanel/VolumeSlider" to="." method="_on_volume_changed"]

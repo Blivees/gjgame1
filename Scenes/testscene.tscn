@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://c00ptt15k8kn8"]
+
+[ext_resource type="Script" uid="uid://pwaeh76yp7vk" path="res://GDscripts/player.gd" id="1_wni78"]
+[ext_resource type="Texture2D" uid="uid://df1sx6w26acb3" path="res://Assets/Sprites/icon.svg" id="2_nes3m"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_44gc5"]
+radius = 60.41523
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjkfs"]
+size = Vector2(1994, 174)
+
+[node name="testscene" type="Node2D" unique_id=207361675]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1578015057]
+position = Vector2(853, 533)
+script = ExtResource("1_wni78")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=476064079]
+texture = ExtResource("2_nes3m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=2025938263]
+shape = SubResource("CircleShape2D_44gc5")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=1118953679]
+offset = Vector2(0, -128)
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.333333
+drag_top_margin = 0.333333
+drag_right_margin = 0.333333
+drag_bottom_margin = 0.333333
+
+[node name="ground" type="StaticBody2D" parent="." unique_id=1415792226]
+position = Vector2(997, 998)
+scale = Vector2(0.9793444, 0.91882277)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ground" unique_id=2058887988]
+shape = SubResource("RectangleShape2D_fjkfs")
+
+[node name="Sprite2D" type="Sprite2D" parent="ground" unique_id=684836214]
+scale = Vector2(15.5390625, 1.3671875)
+texture = ExtResource("2_nes3m")
+
+[node name="AiPet" type="CharacterBody2D" parent="." unique_id=601490675]
+position = Vector2(853, 533)
