@@ -2,12 +2,19 @@
 
 [ext_resource type="Script" uid="uid://pwaeh76yp7vk" path="res://GDscripts/player.gd" id="1_wni78"]
 [ext_resource type="Texture2D" uid="uid://df1sx6w26acb3" path="res://Assets/Sprites/icon.svg" id="2_nes3m"]
+[ext_resource type="Script" uid="uid://cvhufbvjbeh2i" path="res://Scenes/ai_pet.gd" id="3_nes3m"]
+[ext_resource type="Texture2D" uid="uid://blde10oyoeqjv" path="res://Scenes/微信图片_20261124193713_394_78.jpg" id="4_vy56e"]
+[ext_resource type="Script" uid="uid://p0qpupdjh7lc" path="res://Scenes/button_1.gd" id="5_0pdfm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_44gc5"]
 radius = 60.41523
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fjkfs"]
 size = Vector2(1994, 174)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0pdfm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ggkdx"]
 
 [node name="testscene" type="Node2D" unique_id=207361675]
 
@@ -42,5 +49,31 @@ shape = SubResource("RectangleShape2D_fjkfs")
 scale = Vector2(15.5390625, 1.3671875)
 texture = ExtResource("2_nes3m")
 
-[node name="AiPet" type="CharacterBody2D" parent="." unique_id=601490675]
+[node name="AiPet" type="Node2D" parent="." unique_id=349162925]
 position = Vector2(853, 533)
+script = ExtResource("3_nes3m")
+
+[node name="Sprite2D" type="Sprite2D" parent="AiPet" unique_id=1356211697]
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("4_vy56e")
+
+[node name="Button1" type="Area2D" parent="." unique_id=1457122203]
+script = ExtResource("5_0pdfm")
+
+[node name="Sprite2D" type="Sprite2D" parent="Button1" unique_id=1945913719]
+position = Vector2(1516, 541)
+scale = Vector2(4.6953125, 0.5546875)
+texture = ExtResource("2_nes3m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Button1" unique_id=457401366]
+shape = SubResource("CircleShape2D_0pdfm")
+
+[node name="Wall1" type="StaticBody2D" parent="." unique_id=988896421]
+
+[node name="Sprite2D" type="Sprite2D" parent="Wall1" unique_id=374840274]
+position = Vector2(1766.5, 828)
+scale = Vector2(0.6015625, 1.265625)
+texture = ExtResource("2_nes3m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall1" unique_id=578159349]
+shape = SubResource("CircleShape2D_ggkdx")

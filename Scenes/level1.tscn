@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://pwaeh76yp7vk" path="res://GDscripts/player.gd" id="1_c5erv"]
 [ext_resource type="Texture2D" uid="uid://tsoiuus4i6ym" path="res://Assets/Sprites/player.png" id="2_c5erv"]
 [ext_resource type="Texture2D" uid="uid://y76wwbr02x12" path="res://Assets/Sprites/空白.png" id="3_y4dr7"]
-[ext_resource type="PackedScene" path="res://Scenes/level_sense.tscn" id="4_level_sense"]
+[ext_resource type="Script" uid="uid://dssav8p782v0y" path="res://GDscripts/ladder.gd" id="4_ladder"]
+[ext_resource type="Texture2D" uid="uid://7fuscimgfhok" path="res://Assets/Sprites/red.png" id="4_y4dr7"]
 
 [sub_resource type="Animation" id="Animation_lyd6k"]
 length = 0.001
@@ -99,7 +100,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_y4dr7"]
 resource_name = "walk"
-length = 0.23333333
+length = 0.6
 loop_mode = 1
 step = 0.008333334
 tracks/0/type = "value"
@@ -133,10 +134,10 @@ tracks/2/path = NodePath("Player/Sprite2D:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.10000001, 0.13333334, 0.16666667, 0.20833333, 0.225),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.008333329, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7]
+"values": [1, 2, 3, 4, 5, 6]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -172,9 +173,41 @@ tile_size = Vector2i(128, 128)
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_c5erv")
 
+[sub_resource type="TileSetAtlasSource" id="LadderAtlas_01"]
+texture = ExtResource("3_y4dr7")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_didp7"]
+texture = ExtResource("4_y4dr7")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+
+[sub_resource type="TileSet" id="LadderTileSet_01"]
+tile_size = Vector2i(128, 128)
+sources/0 = SubResource("LadderAtlas_01")
+sources/1 = SubResource("TileSetAtlasSource_didp7")
+
 [node name="Level1" type="Node2D" unique_id=655719343]
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=58088397]
+light_mask = 2
+visibility_layer = 2
 position = Vector2(853, 533)
 script = ExtResource("1_c5erv")
 
@@ -185,29 +218,29 @@ speed_scale = 0.5
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=369600021]
 offset = Vector2(0, -128)
-limit_bottom = 1080
+limit_bottom = 1280
 limit_smoothed = true
 position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-drag_left_margin = 0.3
-drag_top_margin = 0.3
-drag_right_margin = 0.3
-drag_bottom_margin = 0.3
+drag_top_margin = 0.1
+drag_bottom_margin = 0.1
 
 [node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=2146581203]
 texture = ExtResource("2_c5erv")
 hframes = 8
 region_enabled = true
-region_rect = Rect2(0, 128, 1024, 128)
+region_rect = Rect2(0, 0, 1024, 128)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1454170497]
 shape = SubResource("CircleShape2D_didp7")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1957745163]
-tile_map_data = PackedByteArray("AAD//wYAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAAYAAAAAAAAAAAAHAAYAAAAAAAAAAAAIAAYAAAAAAAAAAAAJAAYAAAAAAAAAAAAKAAYAAAAAAAAAAAALAAYAAAAAAAAAAAAMAAYAAAAAAAAAAAANAAYAAAAAAAAAAAAOAAYAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAAAAAYAAAAAAAAAAAABAAYAAAAAAAAAAAACAAYAAAAAAAAAAAAAAAgAAAAAAAAAAAABAAgAAAAAAAAAAAACAAgAAAAAAAAAAAADAAgAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAAAAAAAAAAGAAgAAAAAAAAAAAAHAAgAAAAAAAAAAAAIAAgAAAAAAAAAAAAJAAgAAAAAAAAAAAAKAAgAAAAAAAAAAAALAAgAAAAAAAAAAAAMAAgAAAAAAAAAAAANAAgAAAAAAAAAAAAOAAgAAAAAAAAAAAAAAAcAAAAAAAAAAAABAAcAAAAAAAAAAAACAAcAAAAAAAAAAAABAAUAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAAQAAAAAAAAAAAADAAcAAAAAAAAAAAAPAAgAAAAAAAAAAAAQAAgAAAAAAAAAAAARAAgAAAAAAAAAAAASAAgAAAAAAAAAAAATAAgAAAAAAAAAAAAUAAgAAAAAAAAAAAAVAAgAAAAAAAAAAAAWAAgAAAAAAAAAAAAXAAgAAAAAAAAAAAAYAAgAAAAAAAAAAAAZAAgAAAAAAAAAAAAaAAgAAAAAAAAAAAAbAAgAAAAAAAAAAAAcAAgAAAAAAAAAAAAdAAgAAAAAAAAAAAAeAAgAAAAAAAAAAAAfAAgAAAAAAAAAAAAgAAgAAAAAAAAAAAAhAAgAAAAAAAAAAAAiAAgAAAAAAAAAAAAjAAgAAAAAAAAAAAAkAAgAAAAAAAAAAAAlAAgAAAAAAAAAAAAmAAgAAAAAAAAAAAAnAAgAAAAAAAAAAAAoAAgAAAAAAAAAAAD//wIAAAAAAAAAAAD//wMAAAAAAAAAAAD//wQAAAAAAAAAAAD//wUAAAAAAAAAAAD//wYAAAAAAAAAAAD//wcAAAAAAAAAAAD//wgAAAAAAAAAAAAMAAcAAAAAAAAAAAAMAAYAAAAAAAAAAAAMAAUAAAAAAAAAAAANAAUAAAAAAAAAAAANAAQAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAcAAAAAAAAAAAALAAcAAAAAAAAAAAALAAYAAAAAAAAAAAAPAAQAAAAAAAAAAAAQAAQAAAAAAAAAAAARAAQAAAAAAAAAAAATAAMAAAAAAAAAAAAUAAMAAAAAAAAAAAAXAAMAAAAAAAAAAAA=")
 tile_set = SubResource("TileSet_4wht7")
 
-[node name="Level Sense" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_level_sense")]
-visible = false
-player = NodePath("../Player")
+[node name="LadderLayer" type="TileMapLayer" parent="." unique_id=1794920002]
+tile_map_data = PackedByteArray("AAAVAAcAAQAAAAEAAAAVAAYAAQAAAAEAAAAVAAUAAQAAAAEAAAAVAAQAAQAAAAEAAAAVAAMAAQAAAAEAAAA=")
+tile_set = SubResource("LadderTileSet_01")
+script = ExtResource("4_ladder")
+z_index = -1
